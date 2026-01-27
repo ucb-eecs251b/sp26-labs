@@ -327,6 +327,14 @@ to navigate the file, but we recommend using [`gtkwave`](https://sourceforge.net
 > cd build
 > meson install
 > ```
+>
+> If you use MacPorts, I got it to work after all of these, though I'm not clear which were necessary:
+> ```
+> sudo port install desktop-file-utils shared-mime-info json-glib
+> sudo port install glib2 +quartz libepoxy +quartz
+> sudo port install gtk2 +quartz gtk3 +quartz gtk4 +quartz
+> sudo port install gtk-osx-integration-gtk2 gtk-osx-integration-gtk3
+> ```
 
 To open `gtkwave`, run the following command (if you are on an instructional machine, make sure you are using X2GO):
 
