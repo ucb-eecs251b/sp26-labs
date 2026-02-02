@@ -297,7 +297,7 @@ Upon reset, your BIST is expected to output `io.done := false.B`. It should then
 - In the case that `io.dout =/= io.data0` on one of the reads, the BIST should fail by setting `io.done := true.B`
   and `io.fail := true.B`. These signals should not change once you set `io.done := true.B`.
 - For the `Pattern.W1` and `Pattern.R1` patterns, repeat the above process except using `io.data1` instead of `io.data0`.
-- Once all of the patterns complete, set `io.done := true.B` and `io.false := false.B` on the same cycle. 
+- Once all of the patterns complete, set `io.done := true.B` and `io.fail := false.B` on the same cycle. 
   These signals should not change once you set `io.done := true.B`.
 
 > [!CAUTION]
