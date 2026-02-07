@@ -297,7 +297,7 @@ class SramBistTL(params: SramBistParams, beatBytes: Int)(implicit p: Parameters)
 
 ### Configuration
 
-We now define a configuration will allow us to optionally instantiate our SRAM BIST peripheral
+We now define a configuration that will allow us to optionally instantiate our SRAM BIST peripheral
 and connect it to a Rocket core. Add the following to `SramBist.scala`:
 
 ```scala
@@ -460,3 +460,4 @@ Additionally, make sure to push your latest code to your repo.
 ## Acknowledgement
 
 Thanks Rohan Kumar and Elam Day-Friedland for authorizing the lab.
+
