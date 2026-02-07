@@ -69,11 +69,11 @@ source /scratch/$USER/chipyard/env.sh
 > ```
 
 > [!WARNING]
-> (Sp'26) firtool doesn't seem to be automatically installed on the instructional machines, so you have to fetch it yourself. Trying to build it with the build-setup.sh tool (removing the -s 10 flag) doesn't work because the instructional systems have an old version of glibc. Fetch the binary release from way back and unpack it to the project-local bin directory pointed to by your env.sh. Do this:
+> (Sp'26) If your build fails because `firtool` is missing, you might have to fetch it yourself. Trying to build it with the build-setup.sh tool (removing the -s 10 flag) doesn't work because the instructional systems have an old version of glibc. Fetch the binary release from way back and unpack it to the project-local bin directory pointed to by your env.sh. Do this:
 > ```
 > wget https://github.com/llvm/circt/releases/download/firtool-1.60.0/firrtl-bin-linux-x64.tar.gz
 > tar xf firrtl-bin-linux-x64.tar.gz
-> cp -r firtool-1.60.0/bin/* /scratch/$USER/chipyard/.conda-env/riscv-tools/bin
+> cp -r firtool-1.60.0/bin/* /scratch/path/to/$USER/chipyard/.conda-env/riscv-tools/bin
 > ```
 
 ### Common issues
@@ -413,7 +413,7 @@ make CONFIG=SramBistConfig BINARY=../../tests/srambist.riscv run-binary
 > [!WARNING]
 > If your simulation fails with an error to do with not being able to find `<fesvr/tsi.h>` (or similar), try passing `SIM_CXXFLAGS` to the make command:
 > ```cd /scratch/$USER/chipyard/sims/vcs
-> make SIM_CXXFLAGS=-I/scratch/$USER/chipyard/.conda-env/riscv-tools/include  CONFIG=SramBistConfig BINARY=../../tests/srambist.riscv run-binary
+> make SIM_CXXFLAGS=-I/scratch/path/to/$USER/chipyard/.conda-env/riscv-tools/include  CONFIG=SramBistConfig BINARY=../../tests/srambist.riscv run-binary
 > ```
 
 > [!WARNING]
@@ -474,5 +474,6 @@ Additionally, make sure to push your latest code to your repo.
 ## Acknowledgement
 
 Thanks Rohan Kumar and Elam Day-Friedland for authorizing the lab.
+
 
 
