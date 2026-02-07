@@ -68,6 +68,14 @@ source /scratch/$USER/chipyard/env.sh
 > echo "source /scratch/$USER/chipyard/env.sh" >> ~/.bashrc
 > ```
 
+> [!WARNING]
+> (Sp'26) firtool doesn't seem to be automatically installed on the instructional machines, so you have to fetch it yourself. Trying to build it with the build-setup.sh tool (removing the -s 10 flag) doesn't work because the instructional systems have an old version of glibc. Fetch the binary release from way back and unpack it to the project-local bin directory pointed to by your env.sh. Do this:
+> ```
+> wget https://github.com/llvm/circt/releases/download/firtool-1.60.0/firrtl-bin-linux-x64.tar.gz
+> tar xf firrtl-bin-linux-x64.tar.gz
+> cp -r firtool-1.60.0/bin/* /scratch/$USER/chipyard/.conda-env/riscv-tools/bin
+> ```
+
 ### Common issues
 
 If you completed the setup successfully, you can skip this section.
@@ -403,6 +411,12 @@ make CONFIG=SramBistConfig BINARY=../../tests/srambist.riscv run-binary
 ```
 
 > [!WARNING]
+> If your simulation fails with an error to do with not being able to find `<fesvr/tsi.h>` (or similar), try passing `SIM_CXXFLAGS` to the make command:
+> ```cd /scratch/$USER/chipyard/sims/vcs
+> make SIM_CXXFLAGS=-I/scratch/$USER/chipyard/.conda-env/riscv-tools/include  CONFIG=SramBistConfig BINARY=../../tests/srambist.riscv run-binary
+> ```
+
+> [!WARNING]
 > If you make changes to `tests/srambist.c` without running `make` in the `tests/` directory, your changes
 > will not be reflected in the binary and you will end up running and old version of your code on the Rocket
 > core. Whenever you make changes, remember to run `make` to recompile the binary.
@@ -460,4 +474,5 @@ Additionally, make sure to push your latest code to your repo.
 ## Acknowledgement
 
 Thanks Rohan Kumar and Elam Day-Friedland for authorizing the lab.
+
 
